@@ -3,8 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public runData currentRunStats;
-    public metaProgression metaData;
+    private float health = 100;
+    private float damage = 10; 
     private float moveSpeed = 5;
 
     PlayerInput playerInput;
@@ -26,5 +26,23 @@ public class Player : MonoBehaviour
     {
         Vector2 direction = moveAction.ReadValue<Vector2>();
         transform.position += new Vector3(direction.x, 0, direction.y) * moveSpeed * Time.deltaTime;
+    }
+    //function for applying upgrade to the player taking an object from gameManager and reading data from metaProgression scriptable object 
+    public void applyUpgrade(upgradeData upgrade)
+    {
+        switch (upgrade.type)
+        {
+            case upgradeType.Health:
+                health += (float)upgrade.value;
+                break;
+
+            case upgradeType.Damage:
+                damage += (float)upgrade.value;
+                break;
+            
+            case upgradeType.speed:
+                moveSpeed += (float)upgrade.value;
+                break;
+        }
     }
 }
