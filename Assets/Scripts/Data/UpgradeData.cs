@@ -1,11 +1,13 @@
 using UnityEngine;
 
-public enum upgradeType { Health, Damage, speed}
+public enum runUpgradeType { Damage, speed, Shockwave, Maxhealth, Health }
 
-[CreateAssetMenu(fileName = "upgradeData", menuName = "Scriptable Objects/upgradeData")]
+//template for ingame upgrades
+[CreateAssetMenu(fileName = "upgradeData", menuName = "ScriptableObjects/upgradeData")]
 public class upgradeData : ScriptableObject
 {
     public string upgradeName;
-    public upgradeType type;
+    public runUpgradeType type;
     public float value;
+    public GameObject effectPrefab;
 }

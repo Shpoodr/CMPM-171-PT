@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public Player playerInstance;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -15,8 +16,8 @@ public class GameManager : MonoBehaviour
         Instantiate(Resources.Load("PlayerCharacter")).name = "PlayerCharacter";
     }
 
-    public void LevelComplete(upgradeDate upgrade)
+    public void LevelComplete(upgradeData upgrade)
     {
-        Player.applyUpgrade(upgrade);
+        playerInstance.applyUpgrade(upgrade);
     }
 }

@@ -32,15 +32,15 @@ public class Player : MonoBehaviour
     {
         switch (upgrade.type)
         {
-            case upgradeType.Health:
+            case runUpgradeType.Health:
                 health += (float)upgrade.value;
                 break;
 
-            case upgradeType.Damage:
+            case runUpgradeType.Damage:
                 damage += (float)upgrade.value;
                 break;
             
-            case upgradeType.speed:
+            case runUpgradeType.speed:
                 moveSpeed += (float)upgrade.value;
                 break;
         }

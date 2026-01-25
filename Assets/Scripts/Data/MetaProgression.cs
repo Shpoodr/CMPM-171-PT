@@ -1,11 +1,8 @@
 using UnityEngine;
 
-public enum upgradeType { Health, Damage, speed} 
-
-[CreateAssetMenu(fileName = "NewScriptableObjectScript", menuName = "Scriptable Objects/NewScriptableObjectScript")]
-public class NewScriptableObjectScript : ScriptableObject
+//tracks everything permanent 
+[CreateAssetMenu(fileName = "MetaProgression", menuName = "Scriptable Objects/MetaProgression")]
+public class MetaProgression : ScriptableObject
 {
-    public string upgradeName;
-    public upgradeType type;
-    public float value;
+    
 }
