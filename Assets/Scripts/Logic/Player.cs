@@ -3,12 +3,14 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    private float health = 100;
     private float damage = 10; 
     private float moveSpeed = 5;
 
+    
     PlayerInput playerInput;
     InputAction moveAction;
+
+    public RunData runData;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,7 +21,20 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        trackHealth();
         movePlayer();
+
+        Input.GetKeyDown(KeyCode.G);
+        Input.GetKeyDown(KeyCode.D);
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            runData.currentGold += 10;
+            Debug.Log("Current in run Gold: " + runData.currentGold);
+        }
+        if(Input.GetKeyDown(KeyCode.D))
+        {
+            runData.currentHealth -= 100;
+        }
     }
 
     void movePlayer()
@@ -27,13 +42,25 @@ public class Player : MonoBehaviour
         Vector2 direction = moveAction.ReadValue<Vector2>();
         transform.position += new Vector3(direction.x, 0, direction.y) * moveSpeed * Time.deltaTime;
     }
+
+    void trackHealth()
+    {
+        //Debug.Log("Player says RunData is: " + runData);
+        //if (runData == null) { Debug.LogError("RunData is missing!"); return; }
+        //if (GameManager.instance == null) { Debug.LogError("GameManager Instance is missing!"); return; }
+        if (runData.currentHealth <= 0)
+        {
+            Debug.Log("Player has died.");
+            GameManager.instance.onDeath();
+        }
+    }
     //function for applying upgrade to the player taking an object from gameManager and reading data from metaProgression scriptable object 
     public void applyUpgrade(upgradeData upgrade)
     {
         switch (upgrade.type)
         {
             case runUpgradeType.Health:
-                health += (float)upgrade.value;
+                runData.currentHealth += (float)upgrade.value;
                 break;
 
             case runUpgradeType.Damage:

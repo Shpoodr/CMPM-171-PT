@@ -1,12 +1,10 @@
 using UnityEngine;
 
-//template for the permanent skill tree upgrades
-public enum metaUpgradeType {}
+public enum upgradeType { permHealth, permDamage, comboSpeed }
+public enum comboUnlocks { combo1, combo2, combo3 }
+
 [CreateAssetMenu(fileName = "MetaUpgrades", menuName = "Scriptable Objects/MetaUpgrades")]
 public class MetaUpgrades : ScriptableObject
 {
-    public string upgradeName;
-    public metaUpgradeType type;
-    public int cost;
-    public float value;
+    
 }

@@ -4,6 +4,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public Player playerInstance;
+    public MetaProgression mPData;
+    public RunData runData;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -19,5 +21,15 @@ public class GameManager : MonoBehaviour
     public void LevelComplete(upgradeData upgrade)
     {
         playerInstance.applyUpgrade(upgrade);
+    }
+
+//death logic handling
+    public void onDeath()
+    {
+        mPData.totalGold += runData.currentGold;
+        Debug.Log("Total Meta Gold: " + mPData.totalGold);
+        runData.currentGold = 0;
+        runData.upgrades.Clear();
+        runData.currentHealth = 100f;
     }
 }
