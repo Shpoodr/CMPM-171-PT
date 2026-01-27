@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public MetaProgression mPData;
     public RunData runData;
 
+    public Canvas runUpgrades;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        runUpgrades.enabled = false;
         Instantiate(Resources.Load("PlayerCharacter")).name = "PlayerCharacter";
     }
 

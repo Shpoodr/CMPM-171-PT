@@ -1,11 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    //Variables for player stats (temp)
     private float damage = 10; 
     private float moveSpeed = 5;
 
+    [SerializeField]
+    public Text healthText;
+    [SerializeField]
+    private Text goldText;
     
     PlayerInput playerInput;
     InputAction moveAction;
@@ -29,9 +35,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             runData.currentGold += 10;
-            Debug.Log("Current in run Gold: " + runData.currentGold);
         }
-        if(Input.GetKeyDown(KeyCode.D))
+        if(Input.GetKeyDown(KeyCode.H))
         {
             runData.currentHealth -= 100;
         }
