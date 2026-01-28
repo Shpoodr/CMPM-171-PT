@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cfae628e465b9d469400af5c52446a2, type: 3}
-  m_Name: RunData
-  m_EditorClassIdentifier: Assembly-CSharp::RunData
-  upgrades: []
-  currentHealth: 100
-  maxHealth: 100
-  damage: 10
-  speed: 5
-  currentGold: 0
+  m_Script: {fileID: 11500000, guid: 168b2c8835a972d41a64db2a997a6b40, type: 3}
+  m_Name: HeavyKnuckles
+  m_EditorClassIdentifier: Assembly-CSharp::upgradeData
+  upgradeName: Heavy Knuckles
+  type: 0
+  value: 5
+  effectPrefab: {fileID: 0}

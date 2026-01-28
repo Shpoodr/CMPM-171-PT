@@ -10,5 +10,10 @@ public class RunData : ScriptableObject
 {
     public List<upgradeData> upgrades = new List<upgradeData>();
     public float currentHealth;
+    public float maxHealth;
+    public float damage;
+    public float speed;
     public int currentGold;
+    public float attackSpeed;
+    public float regen;
 }

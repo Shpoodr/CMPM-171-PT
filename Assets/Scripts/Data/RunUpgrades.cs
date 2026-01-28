@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum runUpgradeType { Damage, speed, Shockwave, Maxhealth, Health }
+public enum runUpgradeType { Damage, Speed, Maxhealth, Health, AttackSpeed, Regen }
 
 //template for all ingame upgrades
 [CreateAssetMenu(fileName = "upgradeData", menuName = "ScriptableObjects/upgradeData")]

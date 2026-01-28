@@ -1,18 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
-    //Variables for player stats (temp)
-    private float damage = 10; 
-    private float moveSpeed = 5;
-
-    [SerializeField]
-    public Text healthText;
-    [SerializeField]
-    private Text goldText;
-    
     PlayerInput playerInput;
     InputAction moveAction;
 
@@ -23,6 +14,7 @@ public class Player : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions.FindAction("Movement");
+        GameManager.instance.uiUpdate();
     }
 
     void Update()
@@ -30,22 +22,26 @@ public class Player : MonoBehaviour
         trackHealth();
         movePlayer();
 
-        Input.GetKeyDown(KeyCode.G);
-        Input.GetKeyDown(KeyCode.D);
         if (Input.GetKeyDown(KeyCode.G))
         {
             runData.currentGold += 10;
+            GameManager.instance.uiUpdate();
         }
         if(Input.GetKeyDown(KeyCode.H))
         {
             runData.currentHealth -= 100;
+            GameManager.instance.uiUpdate();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            GameManager.instance.openUpgradeMenu();
         }
     }
 
     void movePlayer()
     {
         Vector2 direction = moveAction.ReadValue<Vector2>();
-        transform.position += new Vector3(direction.x, 0, direction.y) * moveSpeed * Time.deltaTime;
+        transform.position += new Vector3(direction.x, 0, direction.y) * runData.speed * Time.deltaTime;
     }
 
     void trackHealth()
@@ -67,13 +63,23 @@ public class Player : MonoBehaviour
             case runUpgradeType.Health:
                 runData.currentHealth += (float)upgrade.value;
                 break;
-
             case runUpgradeType.Damage:
-                damage += (float)upgrade.value;
+                runData.damage += (float)upgrade.value;
                 break;
-            
-            case runUpgradeType.speed:
-                moveSpeed += (float)upgrade.value;
+            case runUpgradeType.Speed:
+                runData.speed += (float)upgrade.value;
+                break;
+            case runUpgradeType.Maxhealth:
+                runData.maxHealth += (float)upgrade.value;
+                break;
+            /*case runUpgradeType.Shockwave:
+                //implement shockwave logic later
+                break;*/
+            case runUpgradeType.AttackSpeed:
+                runData.attackSpeed += (float)upgrade.value;
+                break;
+            case runUpgradeType.Regen:
+                runData.regen += (float)upgrade.value;
                 break;
         }
     }
