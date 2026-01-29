@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
                 break;
             case runUpgradeType.Maxhealth:
                 runData.maxHealth += (float)upgrade.value;
+                GameManager.instance.uiUpdate();
                 break;
             /*case runUpgradeType.Shockwave:
                 //implement shockwave logic later

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168b2c8835a972d41a64db2a997a6b40, type: 3}
   m_Name: AdrenalineRush
   m_EditorClassIdentifier: Assembly-CSharp::upgradeData
-  upgradeName: 
-  type: 0
-  value: 0
+  upgradeName: Adrenaline Rush
+  type: 4
+  value: 1.2
   effectPrefab: {fileID: 0}
